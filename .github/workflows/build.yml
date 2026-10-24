@@ -24,6 +24,9 @@ jobs:
       - name: Extract project ZIP
         run: |
           unzip -o QuranReminderApp-source.zip -d source
+                - name: Fix Calendar import
+        run: |
+          sed -i '/^package /a import java.util.Calendar;' source/app/src/main/java/com/example/quranreminder/ReminderReceiver.java
 
       - name: Install Gradle
         uses: gradle/actions/setup-gradle@v4
